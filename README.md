@@ -4,15 +4,15 @@ This toolkit made by **Zherish Galvin Mayordo** is tailored for data enthusiasts
 
 ## How to use this toolkit
 
-_Note: This package already includes tensorflow and scikit-learn_
-_Note: This package is created using Windows 10 operating system._
+1. Clone this reporsitory using `git clone`.
+2. Make sure to install Anaconda or Miniconda before using this toolkit. You can install either of them at [this link](https://www.anaconda.com/).
+3. Create a new environment for this toolkit using the command `conda env create -f environment.yml`, for CUDA-enabled systems, OR `conda env create -f environment-noncuda.yml`, for non-CUDA-enabled systems.
+4. Activate the new environment: `conda activate sci` or `conda activate sci-noncuda`.
+5. Verify that the new environment was installed correctly: `conda list`
+6. Once verified, run `setup.py` using `pip install -e .`
 
-1. Make sure to install Anaconda or Miniconda before using this toolkit. You can install either of them at [this link](https://www.anaconda.com/).
-2. Create a new environment for this toolkit using the command `conda env create -f environment.yml`, for CUDA-enabled systems, OR `conda env create -f environment-noncuda.yml`, for non-CUDA-enabled systems.
-3. Activate the new environment: `conda activate sci` or `conda activate sci-noncuda`.
-4. Verify that the new environment was installed correctly: `conda list`
-5. Once verified, run `setup.py` using `pip install -e .`
-
+_Note: This package already includes tensorflow and scikit-learn._ <br>
+_Note: This package is created using Windows 10 operating system._ <br>
 _Note: You can also verify if tensorflow is installed properly using the command: `python -c "import tensorflow as tf; print(tf.config.list_physical_devices())"`_
 
 ## Author details
