@@ -4,6 +4,7 @@ This toolkit made by **Zherish Galvin Mayordo** is tailored for data enthusiasts
 
 ## How to use this toolkit
 
+_Note: This package already includes tensorflow and scikit-learn_
 _Note: This package is created using Windows 10 operating system._
 
 1. Make sure to install Anaconda or Miniconda before using this toolkit. You can install either of them at [this link](https://www.anaconda.com/).
