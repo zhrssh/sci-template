@@ -1,4 +1,4 @@
-name: sci-toolkit-noncuda
+name: sci-noncuda
 channels:
   - conda-forge
   - defaults

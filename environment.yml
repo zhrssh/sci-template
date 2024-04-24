@@ -1,4 +1,4 @@
-name: sci-toolkit
+name: sci
 channels:
   - conda-forge
   - defaults
