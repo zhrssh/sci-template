@@ -165,4 +165,3 @@ dependencies:
       - urllib3==2.2.1
       - werkzeug==3.0.2
       - wrapt==1.16.0
-prefix: C:\Users\Galvin\miniconda3\envs\sci-toolkit-noncuda
