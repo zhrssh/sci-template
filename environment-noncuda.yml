@@ -27,10 +27,12 @@ dependencies:
   - graphite2=1.3.13=h63175ca_1003
   - harfbuzz=8.3.0=h7ab893a_0
   - hdf5=1.14.3=nompi_h73e8ff5_100
+  - icc_rt=2022.1.0=h6049295_2
   - icu=73.2=h63175ca_0
   - imath=3.1.11=h12be248_0
   - intel-openmp=2023.1.0=h59b6b97_46320
   - jasper=4.2.3=h28f2b1a_0
+  - joblib=1.2.0=py310haa95532_0
   - khronos-opencl-icd-loader=2023.04.17=h64bf75a_0
   - krb5=1.21.2=heb0366b_0
   - lerc=4.0.0=h63175ca_0
@@ -102,11 +104,14 @@ dependencies:
   - python=3.10.14=he1021f5_0
   - python_abi=3.10=2_cp310
   - qt6-main=6.6.3=h5dee92f_0
+  - scikit-learn=1.3.0=py310h4ed8f06_1
+  - scipy=1.12.0=py310h8640f81_0
   - setuptools=68.2.2=py310haa95532_0
   - snappy=1.1.10=hfb803bf_1
   - sqlite=3.41.2=h2bbff1b_0
   - svt-av1=2.0.0=h63175ca_0
   - tbb=2021.12.0=h91493d7_0
+  - threadpoolctl=2.2.0=pyh0d69192_0
   - tk=8.6.12=h2bbff1b_0
   - tqdm=4.65.0=py310h9909e9c_0
   - tzdata=2024a=h04d1e81_0
