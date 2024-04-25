@@ -7,7 +7,7 @@ This toolkit made by **Zherish Galvin Mayordo** is tailored for data enthusiasts
 1. Clone this reporsitory using `git clone`.
 2. Make sure to install Anaconda or Miniconda before using this toolkit. You can install either of them at [this link](https://www.anaconda.com/).
 3. Create a new environment for this toolkit using the command `conda env create -f environment.yml -n [ENVIRONMENT_NAME]`, for CUDA-enabled systems, OR `conda env create -f environment-noncuda.yml -n [ENVIRONMENT_NAME]`, for non-CUDA-enabled systems.
-4. Activate the new environment: `conda activate sci` or `conda activate sci-noncuda`.
+4. Activate the new environment: `conda activate [ENVIRONMENT_NAME]`.
 5. Verify that the new environment was installed correctly: `conda list`
 6. Once verified, run `setup.py` using `pip install -e .`
 
