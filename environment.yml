@@ -1,3 +1,4 @@
+# trunk-ignore-all(prettier)
 name: sci
 channels:
   - conda-forge

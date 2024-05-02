@@ -1,7 +1,7 @@
 from pathlib import Path
 
 # Directories
-PROJECT_DIR = Path(*Path(__file__).parts[:-3])
+PROJECT_DIR = Path(*Path(__file__).parts[:-1])
 REPORTS_DIR = Path(PROJECT_DIR, "reports")
 MODELS_DIR = Path(PROJECT_DIR, "models")
 
