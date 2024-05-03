@@ -3,7 +3,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 import pillow_heif
-from PIL import Image, ImageFile
+from PIL import Image, ImageFile, ExifTags
 from tqdm import tqdm
 
 
@@ -54,14 +54,14 @@ def images_to_png(directory: Path, destination: Path = None):
             path.unlink(missing_ok=True)
 
 
-def compress_image(directory: Path, *, max_size: int):
+def compress_images(directory: Path, *, reduce_to: float = 0.60):
     """
     This function compresses all images in a given directory to a maximum width, maintaining aspect ratio.
     It uses the Pillow library to read, resize, and save the images.
 
     Args:
         directory (Path): The directory containing the images to be compressed.
-        max_width (int): The maximum width of the compressed images.
+        reduce_to (float, optional): Reduce the size of the image to the given percentage. Defaults to 0.60.
 
     Returns:
         None. The function saves the compressed images in the original directory.
@@ -69,30 +69,39 @@ def compress_image(directory: Path, *, max_size: int):
     ImageFile.LOAD_TRUNCATED_IMAGES = True
     for fpath in tqdm(list(directory.iterdir()), desc="Compressing images..."):
         if fpath.is_dir():
-            compress_image(fpath, max_size=max_size)
+            compress_images(fpath, reduce_to=reduce_to)
             continue
 
         if fpath.suffix != ".heic":  # Heic is not supported in Pillow
             # Read image file
             image = Image.open(fpath.__str__())
 
-            # Get image size and aspect ratio
-            width, height = image.size
-            aspect_ratio = width / height
-
-            # Resize the image while preserving aspect ratio
-            if width > height:
-                new_width = max_size
-                new_height = int(max_size / aspect_ratio)
-            else:
-                new_height = max_size
-                new_width = int(max_size * aspect_ratio)
+            if hasattr(image, '_getexif'):
+                exif = image._getexif()
+                if exif:
+                    for tag, label in ExifTags.TAGS.items():
+                        if label == 'Orientation':
+                            orientation = tag
+                            break
+                    if orientation in exif:
+                        if exif[orientation] == 3:
+                            image = image.rotate(180, expand=True)
+                        elif exif[orientation] == 6:
+                            image = image.rotate(270, expand=True)
+                        elif exif[orientation] == 8:
+                            image = image.rotate(90, expand=True)
 
             # Resize the original image
-            image = image.resize((new_width, new_height))
+            image = image.resize(
+                (round(image.size[0] * reduce_to), round(image.size[1] * reduce_to))
+            )
 
             # Save the compressed image
-            image.save(fpath.__str__(), optimize=True, quality=90)
+            image.save(
+                Path(*fpath.parts[:-1], f"{fpath.stem}.jpg").__str__(),
+                optimize=True,
+                quality=90,
+            )
 
 
 if __name__ == "__main__":
