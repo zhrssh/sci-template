@@ -61,7 +61,7 @@ def compress_images(directory: Path, *, reduce_to: float = 0.60):
 
     Args:
         directory (Path): The directory containing the images to be compressed.
-        reduce_to (float, optional): Reduce the size of the image to the given percentage. Defaults to 0.60.
+        max_width (int): The maximum width of the compressed images.
 
     Returns:
         None. The function saves the compressed images in the original directory.
@@ -76,11 +76,11 @@ def compress_images(directory: Path, *, reduce_to: float = 0.60):
             # Read image file
             image = Image.open(fpath.__str__())
 
-            if hasattr(image, '_getexif'):
+            if hasattr(image, "_getexif"):
                 exif = image._getexif()
                 if exif:
                     for tag, label in ExifTags.TAGS.items():
-                        if label == 'Orientation':
+                        if label == "Orientation":
                             orientation = tag
                             break
                     if orientation in exif:
@@ -98,10 +98,13 @@ def compress_images(directory: Path, *, reduce_to: float = 0.60):
 
             # Save the compressed image
             image.save(
-                Path(*fpath.parts[:-1], f"{fpath.stem}.jpg").__str__(),
+                Path(*fpath.parts[:-1], f"compressed-{fpath.stem}.jpg").__str__(),
                 optimize=True,
                 quality=90,
             )
+
+            # Delete old image
+            fpath.unlink(missing_ok=True)
 
 
 if __name__ == "__main__":
